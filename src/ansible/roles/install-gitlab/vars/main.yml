@@ -1,0 +1,3 @@
+---
+gitlab_repo: "https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh"
+gitlab_version: "gitlab-ce"

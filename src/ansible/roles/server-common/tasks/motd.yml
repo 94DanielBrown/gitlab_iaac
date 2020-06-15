@@ -1,0 +1,25 @@
+---
+
+- name: Set authorized user message
+  copy:
+    src: 00-authorized-user
+    dest: /etc/update-motd.d/{{ item }}
+    mode: 0755
+    owner: root
+    group: root
+  with_items:
+    - 00-authorized-user
+
+- name: Check for generic motd header
+  stat: path=/etc/update-motd.d/00-header
+  register: file_check
+
+- name: Move header so authorization message appears first
+  shell: mv /etc/update-motd.d/00-header /etc/update-motd.d/01-header
+  when: file_check.stat.exists
+
+- name: Disable ubuntu.com links
+  file:
+    path: /etc/update-motd.d/10-help-text
+    mode: 666
+    owner: root

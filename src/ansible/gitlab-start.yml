@@ -1,0 +1,32 @@
+# infrastructure
+- name: Create infrastructure
+  hosts: localhost
+  roles:
+    - role: install-dynamic-inventory
+    - role: ansible-terraform-role
+
+#common
+- hosts: all
+  remote_user: ubuntu
+  become: true
+  roles: 
+  - role: server-common
+  - role: users
+  - role: secure-ssh
+  - role: install-aws-cli
+
+# Server
+- hosts: all
+  remote_user: ubuntu
+  become: true
+  roles: 
+  - role: install-gitlab
+  - role: start-gitlab
+
+# Restore from backup
+#- hosts: all
+ # remote_user: ubuntu
+  #become: true
+  #roles:
+  #- role: restore
+

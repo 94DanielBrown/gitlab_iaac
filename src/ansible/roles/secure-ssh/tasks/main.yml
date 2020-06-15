@@ -1,0 +1,32 @@
+---
+- name: Disable empty password login
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "^#?PermitEmptyPasswords"
+    line: "PermitEmptyPasswords no"
+
+- name: Disable remote root login
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "^#?PermitRootLogin"
+    line: "PermitRootLogin no"
+
+- name: Disable password login
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  with_items:
+    - { regexp: "^PasswordAuthentication\\syes$", line: "PasswordAuthentication no"}
+    - { regexp: "^ChallengeResponseAuthentication\\syes$", line: "ChallengeResponseAuthentication no"}
+
+- name: Enable PAM
+  lineinfile:
+    dest: "{{ sshd_config }}"
+    regexp: "^#?UsePAM"
+    line: "UsePAM yes"
+
+- name: Restart SSH daemon
+  service:
+    name: sshd
+    state: restarted
