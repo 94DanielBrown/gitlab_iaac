@@ -10,7 +10,8 @@ AWS config including key localtion is set in environment variables in the bash s
   
 RUN (run.sh)  
 Brings up the infrastructure  
-Will prompt for a vpc-id as the vpc itself isn't created, an exisitng vpc can be set in src/terraform/terraform.tfvars  
+REQUIRES a vpc-id to be set as the vpc itself isn't created
+Set vpc-id in src/terraform/terraform.tfvars
   
 CLEAN (clean.sh)  
 Brings down infrastructure  

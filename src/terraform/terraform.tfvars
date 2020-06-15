@@ -8,7 +8,7 @@ instance_name = "Gitlab-test"
 
 instance_type = "t2.medium"
 
-vpc_id = "vpc-072d637581035c4ac"
+vpc_id = "vpc-581b7122"
 
 subnet_id = "subnet-063d21348e552bdde"
 
