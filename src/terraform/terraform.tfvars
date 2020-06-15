@@ -10,6 +10,6 @@ instance_type = "t2.medium"
 
 vpc_id = "vpc-581b7122"
 
-subnet_id = "subnet-063d21348e552bdde"
+subnet_id = "subnet-4c4d132b"
 
 ami_id = "ami-07ebfd5b3428b6f4d"

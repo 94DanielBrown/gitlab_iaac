@@ -15,7 +15,3 @@ variable "key_name"{}
 variable "instance_type" {}
 variable "instance_name" {}
 variable "subnet_id" {}
-
-
-
-

@@ -4,8 +4,8 @@ provider "aws" {
   profile = var.profile
 }
 
-module "networking" {
-  source = "./networking"
+module "security" {
+  source = "./security"
   vpc_id = var.vpc_id
 }
 
@@ -15,7 +15,7 @@ module "compute" {
   key_name = var.key_name
   instance_name = var.instance_name
   instance_type = var.instance_type
-  security_group_id = module.networking.sg_id_out
+  security_group_id = module.security.sg_id_out
   subnet_id = var.subnet_id
 }
 
